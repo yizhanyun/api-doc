@@ -74,13 +74,14 @@ body {
 
   // This is the logo at the top of the ToC
   .logo {
+    visibility: hidden;
     display: block;
     max-width: 100%;
-    margin-top: $logo-margin;
+    // margin-top: $logo-margin;
     height: 40px;
     margin-left: auto;
     margin-right: auto;
-    margin-bottom: $logo-margin;
+    // margin-bottom: $logo-margin;
   }
 
   & > .search {
