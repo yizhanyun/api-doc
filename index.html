@@ -311,10 +311,39 @@
             <a href="#api" class="toc-h1 toc-link" data-title="API服务器">API服务器</a>
           </li>
           <li>
-            <a href="#message" class="toc-h1 toc-link" data-title=" 留言数据中心 "> 留言数据中心 </a>
+            <a href="#41b08090bd" class="toc-h1 toc-link" data-title="核心概念">核心概念</a>
               <ul class="toc-list-h2">
                   <li>
-                    <a href="#be48e578cc" class="toc-h2 toc-link" data-title="新建留言">新建留言</a>
+                    <a href="#9875867a8d" class="toc-h2 toc-link" data-title="虚拟数据中心类型">虚拟数据中心类型</a>
+                  </li>
+                  <li>
+                    <a href="#schema" class="toc-h2 toc-link" data-title="虚拟数据中心Schema">虚拟数据中心Schema</a>
+                  </li>
+                  <li>
+                    <a href="#eebe4fcadd" class="toc-h2 toc-link" data-title="虚拟数据中心分支">虚拟数据中心分支</a>
+                  </li>
+                  <li>
+                    <a href="#id" class="toc-h2 toc-link" data-title="虚拟数据中心ID">虚拟数据中心ID</a>
+                  </li>
+                  <li>
+                    <a href="#cell" class="toc-h2 toc-link" data-title="虚拟数据中心数据细胞Cell">虚拟数据中心数据细胞Cell</a>
+                  </li>
+              </ul>
+          </li>
+          <li>
+            <a href="#api-2" class="toc-h1 toc-link" data-title="标准API">标准API</a>
+              <ul class="toc-list-h2">
+                  <li>
+                    <a href="#schema-2" class="toc-h2 toc-link" data-title="获得数据中心Schema">获得数据中心Schema</a>
+                  </li>
+                  <li>
+                    <a href="#cell-2" class="toc-h2 toc-link" data-title="新建Cell">新建Cell</a>
+                  </li>
+                  <li>
+                    <a href="#dda2231dc6" class="toc-h2 toc-link" data-title="搜索、列举数据">搜索、列举数据</a>
+                  </li>
+                  <li>
+                    <a href="#id-2" class="toc-h2 toc-link" data-title="按ID获得详细数据">按ID获得详细数据</a>
                   </li>
               </ul>
           </li>
@@ -374,132 +403,49 @@ const resp = await fetch(endpoint, option)
 </aside>
 <h1 id='api'>API服务器</h1>
 <p>一站云服务器为 <code>https://yizhanyun.cn/</code></p>
+<h1 id='41b08090bd'>核心概念</h1><h2 id='9875867a8d'>虚拟数据中心类型</h2>
+<p>每类虚拟数据中心有一个独一无二的类型标识，以下简称<code>type</code>。</p>
 
-<h1 id="message"> 留言数据中心 </h1>
+<p>目前以上线的标准数据中心如下:</p>
 
-<p>留言数据中心提供一个轻量级销售机会留言、投诉留言的数据服务及管理后台。留言数据中心只发布一个API，即新建留言的API。</p>
-<h2 id='be48e578cc'>新建留言</h2>
-<p>使用本API新建留言。</p>
-<h3 id='http-request'>HTTP Request</h3>
-<p><code>POST /vdc-api/message</code></p>
-<h3 id='54b8a90b3c'>数据</h3>
-<table><thead>
-<tr>
-<th>字段</th>
-<th>类型</th>
-<th>必须</th>
-<th>描述</th>
-</tr>
-</thead><tbody>
-<tr>
-<td>department</td>
-<td>string</td>
-<td>否</td>
-<td>部门</td>
-</tr>
-<tr>
-<td>product</td>
-<td>string</td>
-<td>否</td>
-<td>产品</td>
-</tr>
-<tr>
-<td>category</td>
-<td>string</td>
-<td>否</td>
-<td>类型</td>
-</tr>
-<tr>
-<td>name</td>
-<td>string</td>
-<td>否</td>
-<td>姓名</td>
-</tr>
-<tr>
-<td>company</td>
-<td>string</td>
-<td>否</td>
-<td>公司</td>
-</tr>
-<tr>
-<td>title</td>
-<td>string</td>
-<td>否</td>
-<td>职务</td>
-</tr>
-<tr>
-<td>email</td>
-<td>string</td>
-<td>否</td>
-<td>电子邮箱</td>
-</tr>
-<tr>
-<td>website</td>
-<td>string</td>
-<td>否</td>
-<td>网站</td>
-</tr>
-<tr>
-<td>extra</td>
-<td>string</td>
-<td>否</td>
-<td>额外内容，由API调用者自由使用</td>
-</tr>
-<tr>
-<td>clientId</td>
-<td>string</td>
-<td>否</td>
-<td>客户编号</td>
-</tr>
-<tr>
-<td>phone</td>
-<td>string</td>
-<td>否</td>
-<td>电话</td>
-</tr>
-<tr>
-<td>mobile</td>
-<td>string</td>
-<td>否</td>
-<td>手机号</td>
-</tr>
-<tr>
-<td>fax</td>
-<td>string</td>
-<td>否</td>
-<td>传真</td>
-</tr>
-<tr>
-<td>address</td>
-<td>string</td>
-<td>否</td>
-<td>地址</td>
-</tr>
-<tr>
-<td>zip</td>
-<td>string</td>
-<td>否</td>
-<td>邮政编码</td>
-</tr>
-<tr>
-<td>message</td>
-<td>string</td>
-<td>是</td>
-<td>留言</td>
-</tr>
-</tbody></table>
-<div class="highlight"><pre class="highlight plaintext"><code>{
- "product": "大家电",
- "category": "代理资格",
- "company": "上海第一电气连锁",
- "website": "www.yizhanyun.cn",
- "email": "info@yizhanyun.cn",
- "mobile": "1370xxxxxx",
- "message": "我公司希望代理贵公司的大家电。请尽快与我联系",
- "name": "武松",
- "title": "渠道经理"
-}
-</code></pre></div><h1 id='2fd51d31a7'>状态码</h1>
+<ol>
+<li>文章中心 - <code>type: article</code></li>
+<li>案例中心 - <code>type: cases</code></li>
+<li>留言中西 - <code>type: message</code></li>
+<li>图片中心 - <code>type: gallery</code></li>
+<li>产品信息中心 - <code>type: product</code></li>
+</ol>
+<h2 id='schema'>虚拟数据中心Schema</h2>
+<p>数据中心的字段定义及规范。</p>
+
+<p>Schema决定了数据中心使用哪些字段，每个字段的类新，可能的取值。</p>
+
+<p>一站云管理后台提供数据中心schema配置工具，定制数据。</p>
+<h2 id='eebe4fcadd'>虚拟数据中心分支</h2>
+<p>为了支持数据，特别是文章等类型数据的不同编辑状态，数据中心有不同的分支，以下简称<code>branch</code>。</p>
+
+<p>目前支持三个分支:</p>
+
+<ol>
+<li><code>published</code> - 正式发布分支</li>
+<li><code>edit</code> - 修改中分支</li>
+<li><code>draft</code> - 草稿分支</li>
+</ol>
+
+<p>根据数据中心特点，不是所有数据中心都有分支。标准数据中心中 <code>article</code> 、<code>product</code>和 <code>cases</code>具有三个分支。</p>
+
+<p>留言中心和图片中心只有一个 <code>published</code>分支。</p>
+<h2 id='id'>虚拟数据中心ID</h2>
+<p>每个虚拟数据中心有一个独一无二的ID，以下简称 <code>vid</code>，用于全系统唯一标识数据中心。</p>
+<h2 id='cell'>虚拟数据中心数据细胞Cell</h2>
+<p>每个虚拟数据中心的每条数据，被称为数据细胞，以下简称 <code>cell</code>，每个数据细胞有一个唯一的ID，以下如无特殊说明，<code>id</code>代指每个Cell的id。</p>
+
+<p>每个数据中心的不同分支的细胞，id可能相同。同一数据中心、同一分支细胞，id不会重复。</p>
+<h1 id='api-2'>标准API</h1><h2 id='schema-2'>获得数据中心Schema</h2><h3 id='get-vdc-api-v1-_schema-type'>GET /vdc-api/v1/_schema/[type]</h3><h2 id='cell-2'>新建Cell</h2><h3 id='post-vdc-api-v1-_action-type-branch-vid'>POST /vdc-api/v1/_action/[type]/[branch]/[vid]</h3>
+<p>创建新的细胞。</p>
+
+<p>目前仅留言中心支持通过API创建细胞。</p>
+<h2 id='dda2231dc6'>搜索、列举数据</h2><h3 id='post-vdc-api-v1-_query-type-branch'>POST /vdc-api/v1/_query/[type]/[branch]</h3><h2 id='id-2'>按ID获得详细数据</h2><h3 id='get-vdc-api-v1-_cell-type-branch-vid-id'>GET /vdc-api/v1/_cell/[type]/[branch]/[vid]/[id]</h3><h1 id='2fd51d31a7'>状态码</h1>
 <aside class="notice">
 除非特别声明，所有API使用标准HTTP状态码代表处理结果。
 </aside>
