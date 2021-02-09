@@ -68,49 +68,71 @@ const resp = await fetch(endpoint, option)
 一站云服务器为 `https://yizhanyun.cn/`
 
 
-<h1 id="message"> 留言数据中心 </h1>
+# 核心概念
 
-留言数据中心提供一个轻量级销售机会留言、投诉留言的数据服务及管理后台。留言数据中心只发布一个API，即新建留言的API。
+## 虚拟数据中心类型
 
-## 新建留言
+每类虚拟数据中心有一个独一无二的类型标识，以下简称`type`。
 
-使用本API新建留言。
+目前以上线的标准数据中心如下:
 
-### HTTP Request
+1. 文章中心 - `type: article`
+2. 案例中心 - `type: cases`
+3. 留言中西 - `type: message`
+4. 图片中心 - `type: gallery`
+5. 产品信息中心 - `type: product`
 
-`POST /vdc-api/message`
+## 虚拟数据中心Schema
 
-### 数据
+数据中心的字段定义及规范。
 
-字段 | 类型 | 必须 | 描述
---------- | ------- | ------ | -----------
-department | string |否 | 部门
-product | string |否 | 产品
-category | string |否 | 类型
-name | string |否 | 姓名
-company | string |否  | 公司
-title | string |否 | 职务
-email | string |否 | 电子邮箱
-website | string|否  | 网站
-extra | string |否 | 额外内容，由API调用者自由使用
-clientId | string|否  | 客户编号
-phone | string |否 | 电话
-mobile | string |否 | 手机号
-fax | string |否 | 传真
-address | string|否  | 地址
-zip | string |否 | 邮政编码
-message | string|是  | 留言
+Schema决定了数据中心使用哪些字段，每个字段的类新，可能的取值。
 
-```
-{
- "product": "大家电",
- "category": "代理资格",
- "company": "上海第一电气连锁",
- "website": "www.yizhanyun.cn",
- "email": "info@yizhanyun.cn",
- "mobile": "1370xxxxxx",
- "message": "我公司希望代理贵公司的大家电。请尽快与我联系",
- "name": "武松",
- "title": "渠道经理"
-}
-```
+一站云管理后台提供数据中心schema配置工具，定制数据。
+
+## 虚拟数据中心分支
+
+为了支持数据，特别是文章等类型数据的不同编辑状态，数据中心有不同的分支，以下简称`branch`。
+
+目前支持三个分支:
+
+1. `published` - 正式发布分支
+2. `edit` - 修改中分支
+3. `draft` - 草稿分支
+
+根据数据中心特点，不是所有数据中心都有分支。标准数据中心中 `article` 、`product`和 `cases`具有三个分支。
+
+留言中心和图片中心只有一个 `published`分支。
+
+## 虚拟数据中心ID
+
+每个虚拟数据中心有一个独一无二的ID，以下简称 `vid`，用于全系统唯一标识数据中心。
+
+## 虚拟数据中心数据细胞Cell
+
+每个虚拟数据中心的每条数据，被称为数据细胞，以下简称 `cell`，每个数据细胞有一个唯一的ID，以下如无特殊说明，`id`代指每个Cell的id。
+
+每个数据中心的不同分支的细胞，id可能相同。同一数据中心、同一分支细胞，id不会重复。
+
+# 标准API
+
+## 获得数据中心Schema
+
+### GET /vdc-api/v1/_schema/[type]
+
+## 新建Cell
+
+### POST /vdc-api/v1/_action/[type]/[branch]/[vid]
+
+创建新的细胞。
+
+目前仅留言中心支持通过API创建细胞。
+
+
+## 搜索、列举数据
+
+### POST /vdc-api/v1/_query/[type]/[branch]
+
+## 按ID获得详细数据
+
+### GET /vdc-api/v1/_cell/[type]/[branch]/[vid]/[id]
